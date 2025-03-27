@@ -1,0 +1,8 @@
+h1{
+    background-color: rgb(73, 107, 231);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background:linear-gradient(to top, rgb(165, 155, 238),rgb(159, 155, 234)
+    ,rgb(166, 238, 111),rgb(152, 209, 18));
+}

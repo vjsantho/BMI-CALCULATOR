@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>BMI Introduction</h1>
+    <p>
+        BMI is a measurement of a person's leanness or corpulence based on their height and weight. 
+        It is widely used as a general indicator of whether a person has a healthy body weight for their height. 
+        It serves as a useful guide to determine if any additional health assessment is required.
+    </p>
+    
+    <p><strong>Health Indicator:</strong> BMI provides a general idea of a person’s health status related to weight.</p>
+    <p><strong>Risk Assessment:</strong> Helps identify potential health risks like heart disease, diabetes, and hypertension.</p>
+    <p><strong>Fitness Tracking:</strong> Useful for individuals managing their weight or setting fitness goals.</p>
+
+    <h1>BMI Formula</h1>
+    
+    <h3>USC (Imperial) Units:</h3>
+    <p>BMI = (703 × weight (lbs)) / (height (in) × height (in))</p>
+    <p>Example: BMI = (703 × 160) / (70 × 70) = 23.0</p>
+
+    <h3>SI (Metric) Units:</h3>
+    <p>BMI = weight (kg) / height² (m²)</p>
+    <p>Example: BMI = 72.57 / (1.778 × 1.778) = 23.0</p>
+
+    <h1>BMI Calculator</h1>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter your weight in kg" required><br><br>
+
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Enter your height in cm" required><br><br>
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('result').innerText = "Please enter valid values for weight and height.";
+                return;
+            }
+
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+
+            let resultText = `Your BMI is: ${bmi.toFixed(2)}\n`;
+
+            if (bmi < 18.5) {
+                resultText += "You are underweight.";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                resultText += "You have a normal weight.";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                resultText += "You are overweight.";
+            } else {
+                resultText += "You are obese.";
+            }
+
+            // Display result
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>
